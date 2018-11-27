@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour {
 
     public void Save(int score, Vector3 playerPos, Vector3 enemyPos) {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream fs = File.Open(Application.persistentDataPath + "/GameData.dat", FileMode.OpenOrCreate);
+        FileStream fs = File.Open(Application.dataPath + "/GameData.dat", FileMode.OpenOrCreate);
         GameData data = new GameData();
         SurrogateSelector ss = new SurrogateSelector();
         Vector3SerializationSurrogate v3ss = new Vector3SerializationSurrogate();
@@ -45,9 +45,9 @@ public class GameController : MonoBehaviour {
     }
 
     public void Load() {
-        if (File.Exists(Application.persistentDataPath + "/GameData.dat")) {
+        if (File.Exists(Application.dataPath + "/GameData.dat")) {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream fs = File.Open(Application.persistentDataPath + "/GameData.dat", FileMode.Open, FileAccess.Read);
+            FileStream fs = File.Open(Application.dataPath + "/GameData.dat", FileMode.Open, FileAccess.Read);
             GameData data = (GameData)bf.Deserialize(fs);
             fs.Close();
             SceneManager.LoadScene("MazeScene");
