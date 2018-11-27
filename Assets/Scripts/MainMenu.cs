@@ -2,10 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
-	
-	public void StartGame() {
+
+    private Button[] menuButtons;
+
+    private void Awake()
+    {
+        menuButtons = GetComponentsInChildren<Button>();
+        menuButtons[0].Select();
+    }
+
+    public void StartGame() {
         SceneManager.LoadScene("MazeScene");
     }
 

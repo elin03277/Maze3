@@ -12,14 +12,17 @@ public class PauseMenu : MonoBehaviour {
 
     public GameObject player;
     public GameObject enemy;
-	
-	// Update is called once per frame
-	void Update () {
+
+    public Button[] menuButtons;
+
+    // Update is called once per frame
+    void Update () {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (GameIsPaused) {
                 Resume();
             } else {
                 Pause();
+                menuButtons[0].Select();
             }
         }
 	}
