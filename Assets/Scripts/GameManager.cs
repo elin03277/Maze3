@@ -43,9 +43,9 @@ public class GameManager : MonoBehaviour {
 			player.GetComponent<Collider> ().enabled = !player.GetComponent<Collider> ().enabled;
 		if (Input.GetKeyDown (KeyCode.Q) || Input.GetKeyUp(KeyCode.JoystickButton2))
 			ToggleDay ();
-		if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyUp(KeyCode.JoystickButton0))
+		if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyUp(KeyCode.JoystickButton6))
 			ToggleFog();
-        if (Input.GetKeyDown(KeyCode.C) || Input.GetKeyUp(KeyCode.JoystickButton3))
+        if (Input.GetKeyDown(KeyCode.C) || Input.GetKeyUp(KeyCode.JoystickButton5))
             ToggleLight();
         if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyUp(KeyCode.JoystickButton4))
             ThrowBall();
