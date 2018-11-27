@@ -14,16 +14,35 @@ public class PauseMenu : MonoBehaviour {
     public GameObject enemy;
 
     public Button[] menuButtons;
+    private int cur = 0;
 
     // Update is called once per frame
     void Update () {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyUp(KeyCode.JoystickButton7)) {
             if (GameIsPaused) {
                 Resume();
             } else {
                 Pause();
                 menuButtons[0].Select();
             }
+        }
+        if (GameIsPaused)
+        {
+            if (Input.GetKeyDown(KeyCode.JoystickButton0))
+                menuButtons[cur].onClick.Invoke();
+            if (Input.GetKeyDown(KeyCode.JoystickButton12))
+            {
+                cur++;
+                if (cur > menuButtons.Length)
+                    cur = menuButtons.Length;
+            }
+            else if (Input.GetKeyDown(KeyCode.JoystickButton10))
+            {
+                cur--;
+                if (cur < 0)
+                    cur = 0;
+            }
+            menuButtons[cur].Select();
         }
 	}
 
