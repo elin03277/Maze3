@@ -15,9 +15,16 @@ public class PlayerController : MonoBehaviour {
 
 	void Update(){
 		float xMov = Input.GetAxisRaw ("Horizontal");
-		float zMov = Input.GetAxisRaw ("Vertical");
+		float zMov = Input.GetAxisRaw ("Vertical"); 
+        if(xMov != 0 || zMov != 0) {
+            if(!AudioManager.instance.isPlaying("run")) {
+                AudioManager.instance.Play("run");
+            }
+        } else {
+            AudioManager.instance.Stop("run");
+        }
 
-		Vector3 moveHorizontal = transform.right * xMov;
+        Vector3 moveHorizontal = transform.right * xMov;
 		Vector3 moveVertical = transform.forward * zMov;
 
 		Vector3 velocity = (moveHorizontal + moveVertical).normalized * speed * Time.deltaTime * 25;
@@ -39,5 +46,13 @@ public class PlayerController : MonoBehaviour {
     private void OnTriggerEnter(Collider col) {
         if (col.gameObject.name == "Door")
             SceneManager.LoadScene("PongAI");
+    }
+
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.name == "Wall") {
+            AudioManager.instance.Play("wall");
+        }
     }
 }

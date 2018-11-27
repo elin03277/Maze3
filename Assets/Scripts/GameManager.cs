@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour {
             ToggleLight();
         if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyUp(KeyCode.JoystickButton4))
             ThrowBall();
+        if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyUp(KeyCode.JoystickButton5))
+            ToggleMusic();
     }
 
 	private void BeginGame () {
@@ -74,23 +76,44 @@ public class GameManager : MonoBehaviour {
     }
 
 	private void ToggleDay(){
-        if (directional.color == Color.white)
+        if (directional.color == Color.white) {
             directional.color = Color.black;
-        else
+            AudioManager.instance.dayMusic = false;
+            AudioManager.instance.nightMusic = true;
+        } else {
             directional.color = Color.white;
+            AudioManager.instance.dayMusic = true;
+            AudioManager.instance.nightMusic = false;
+        }
 	}
 
 	private void ToggleFog() {
 		fogEffect.enabled = !fogEffect.enabled;
+        if(fogEffect.enabled) {
+            AudioManager.instance.Volume("dayMusic", 0.25f);
+            AudioManager.instance.Volume("nightMusic", 0.25f);
+            AudioManager.instance.fogOn = true;
+        } else {
+            AudioManager.instance.Volume("dayMusic", 0.5f);
+            AudioManager.instance.Volume("nightMusic", 0.5f);
+            AudioManager.instance.fogOn = false;
+        }
 	}
 
     private void ToggleLight() {
         flashlightLight.enabled = !flashlightLight.enabled;
     }
+    
+    private void ToggleMusic() {
+        AudioManager.instance.on = !AudioManager.instance.on;
+    }
 
     private void ThrowBall() {
+        AudioManager.instance.Play("shoot");
+
         GameObject clone = Instantiate(ball, cam.transform.position + new Vector3(0,.2f,0), cam.transform.rotation);
         clone.GetComponent<Rigidbody>().AddForce(cam.transform.forward * 350);
         Destroy(clone, 5f);
     }
+
 }

@@ -46,6 +46,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AudioDetection.cs" />
+     <Compile Include="Assets\Scripts\AudioManager.cs" />
      <Compile Include="Assets\Scripts\BasketBall.cs" />
      <Compile Include="Assets\Scripts\DeferredFogEffect.cs" />
      <Compile Include="Assets\Scripts\FogEffect.cs" />
@@ -77,6 +79,7 @@
      <Compile Include="Assets\Scripts\Pong\PlayerTwo.cs" />
      <Compile Include="Assets\Scripts\ScoreManager.cs" />
      <Compile Include="Assets\Scripts\SerializableVector3.cs" />
+     <Compile Include="Assets\Scripts\Sound.cs" />
      <Compile Include="Assets\Scripts\Vector3SerializationSurrogate.cs" />
      <Compile Include="Assets\Scripts\WaypointController.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />

@@ -6,15 +6,15 @@ public class BasketBall : MonoBehaviour {
 
     void OnCollisionEnter(Collision col) {
         if (col.gameObject.name == "Wall") {
-            //Make wall sound
+            AudioManager.instance.Play("wall");
         } else if (col.gameObject.name == "Quad") {
-            //Make floor sound
+            AudioManager.instance.Play("floor");
         }
     }
 
     private void OnTriggerEnter(Collider col) {
         if (col.gameObject.name == "AI") {
-            //Make AI sound
+            AudioManager.instance.Play("ai");
             //Update Score
             ScoreManager.score += 1;
             Destroy(gameObject);

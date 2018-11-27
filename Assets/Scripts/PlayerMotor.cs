@@ -3,20 +3,21 @@
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMotor : MonoBehaviour {
 
-	public Camera cam;
+    public Camera cam;
 
-	private Vector3 velocity;
-	private Vector3 rotation;
-	public Vector3 cameraRotation;
+    private Vector3 velocity;
+    private Vector3 rotation;
+    public Vector3 cameraRotation;
 
-	private Rigidbody rb;
+    private Rigidbody rb;
 
-	void Start(){
-		rb = GetComponent<Rigidbody> ();
-	}
+    void Start() {
+        rb = GetComponent<Rigidbody>();
+    }
 
-	public void Move(Vector3 _velocity){
-		velocity = _velocity;
+    public void Move(Vector3 _velocity) {
+        velocity = _velocity;
+        
 	}
 
 	public void Rotate(Vector3 _rotation){
